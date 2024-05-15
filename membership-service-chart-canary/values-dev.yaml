@@ -3,29 +3,22 @@
 # Declare variables to be passed into your templates.
 
 replicaCount: 5
-
 image:
   repository: 473749683913.dkr.ecr.ap-northeast-2.amazonaws.com/payproject-devops
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "df8c4e8efec6919c65f38d87d1c6622d67e09a08"
-
-
+  tag: "23ee97985c43f3e6df75437fa5157b10409341da"
 fullnameOverride: "dev-membership-service"
-
 serviceAccount:
   # Specifies whether a service account should be created
   create: false
-
-
 service:
   type: ClusterIP
   port: 8080
-
 ingress:
   enabled: true
   className: "alb"
-  annotations: 
+  annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     # kubernetes.io/ingress.class: nginx
@@ -34,6 +27,4 @@ ingress:
     - paths:
         - path: /
           pathType: Prefix
-  
-  
 env: dev
